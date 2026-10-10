@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -26,16 +26,6 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Type-check and build
         run: npm run build
-      - name: Publish build to preview-dist branch
-        if: github.ref != 'refs/heads/main' && github.event_name == 'push'
-        run: |
-          cd dist
-          git init -q -b preview-dist
-          git config user.name "github-actions"
-          git config user.email "github-actions@users.noreply.github.com"
-          git add -A
-          git commit -q -m "Build of ${GITHUB_SHA}"
-          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" preview-dist
       - name: Upload site
         if: github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3

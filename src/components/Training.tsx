@@ -4,7 +4,7 @@ export default function Training() {
   return (
     <section className="bg-panel">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-12 md:py-24">
-        <h2 className="section-title md:col-span-4">Training and education</h2>
+        <h2 className="section-title md:col-span-4">Training</h2>
 
         <div className="md:col-span-8">
           <div className="border-t border-ink py-6">
